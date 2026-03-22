@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #7a4bff, #9f56ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+            transition: background-image 0.5s ease-in-out;
+            animation: fadeInBackground 3s ease-out;
+        }
+
+        @keyframes fadeInBackground {
+            0% {
+                background: linear-gradient(135deg, #7a4bff, #9f56ff);
+            }
+            50% {
+                background: linear-gradient(135deg, #9f56ff, #7a4bff);
+            }
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            width: 80%;
+            max-width: 30%;
+            min-width: 300px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            animation: fadeInContainer 1s ease-in forwards;
+        }
+
+        @keyframes fadeInContainer {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #ffffff;
+            animation: slideInFromTop 1s ease-out;
+        }
+
+        @keyframes slideInFromTop {
+            0% {
+                transform: translateY(-100%);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        input,
+        button {
+            padding: 15px;
+            width: 85%;
+            font-size: 1.1em;
+            border-radius: 8px;
+            margin: 10px 0;
+            outline: none;
+            border: 1px solid #ddd;
+            transition: transform 0.2s;
+        }
+        button{
+            width: 50%;
+        }
+
+        input:focus {
+            border-color: #9f56ff;
+        }
+
+        button {
+            background: linear-gradient(135deg, #9f56ff, #7a4bff);
+            color: white;
+            cursor: pointer;
+            border: none;
+            transition: background 0.3s, transform 0.2s;
+            animation: pulseButton 1.5s infinite alternate;
+        }
+
+        @keyframes pulseButton {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.1);
+            }
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #7a4bff, #9f56ff);
+            transform: scale(1.05);
+        }
+
+        #weather {
+            margin-top: 30px;
+            font-size: 1.2em;
+            opacity: 0;
+            animation: fadeInWeather 1s ease-in forwards;
+        }
+
+        @keyframes fadeInWeather {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .error {
+            color: #ff4040;
+            animation: shakeError 0.5s ease-in-out;
+        }
+
+        @keyframes shakeError {
+            0% {
+                transform: translateX(-10px);
+            }
+            50% {
+                transform: translateX(10px);
+            }
+            100% {
+                transform: translateX(-10px);
+            }
+        }
+
+        .weather-icon {
+            width: 120px;
+            margin-top: 20px;
+            animation: bounceIcon 2s ease-in-out infinite;
+        }
+
+        @keyframes bounceIcon {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Weather App</h1>
+        <input type="text" id="city" placeholder="Enter city name" />
+        <button id="getWeatherBtn" onclick="getCity()">Get Weather</button>
+        <div id="weather"></div>
+    </div>
+		<script src="./weather.js">
+					//`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=6ed570ac911dad2a255e2965a53ced74&units=metric`
+		</script>
+</body>
+</html>
